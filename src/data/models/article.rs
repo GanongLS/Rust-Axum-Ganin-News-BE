@@ -6,9 +6,9 @@ use serde::{Deserialize, Serialize};
 pub type AuthorId = u16;
 pub type EditorId = u16;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
 pub struct Article {
-  pub id: usize,
+  pub id: u32,
   pub title: String,
   pub content: String,
   pub category_id: usize,
@@ -27,7 +27,19 @@ pub struct Article {
   pub likes: usize,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+/// Display the book using the format "{title} by {author}".
+/// This is a typical Rust trait and is not axum-specific.
+impl std::fmt::Display for Article {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    write!(
+      f,
+      "article with title:{} \n content: {}",
+      self.title, self.content
+    )
+  }
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
 pub enum ApprovalState {
   Draft,
   RequestApproval,
@@ -36,7 +48,7 @@ pub enum ApprovalState {
   // Add other states as needed
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
 pub struct Comment {
   pub id: usize,
   pub user_id: AuthorId,
@@ -45,7 +57,7 @@ pub struct Comment {
   // Add other comment fields as needed
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
 pub struct Category {
   pub id: usize,
   pub name: String,

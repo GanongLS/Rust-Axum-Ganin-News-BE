@@ -166,7 +166,7 @@ pub static ARTICLE_DATA: Lazy<Mutex<HashMap<u32, Article>>> = Lazy::new(|| {
 });
 
 // Dummy category
-pub static DUMMY_CATEGORY: Lazy<HashMap<u32, Category>> = Lazy::new(|| {
+pub static _DUMMY_CATEGORY: Lazy<HashMap<u32, Category>> = Lazy::new(|| {
   HashMap::from([(
     1,
     Category {

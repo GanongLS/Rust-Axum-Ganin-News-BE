@@ -1,7 +1,7 @@
-use axum::{response, extract};
+use axum::{extract, response};
 use std::thread;
 
-use crate::data::{DATA, models::book::Book};
+use crate::data::{models::book::Book, books::DATA};
 
 /// axum handler for "GET /books" which responds with a resource page.
 /// This demo uses our DATA; a production app could use a database.

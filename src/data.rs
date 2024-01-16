@@ -1,5 +1,6 @@
 /// Bring Book struct into scope
 pub mod book;
+pub mod access;
 use book::Book;
 
 /// Use once_cell for creating a global variable e.g. our DATA data.

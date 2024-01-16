@@ -1,10 +1,16 @@
-use axum::{routing, Router};
-
 mod routes;
+
+use crate::data::access;
+
+use axum::{routing, Router};
 use routes::{fallback, hello_world, mirror_body_json, mirror_body_string, things};
 
 // return Router;
-pub fn app_router() -> Router<()> {
+pub async fn app_router() -> Router<()> {
+
+    // init and reading data
+ access::print_data().await;
+
   Router::new()
     .fallback(fallback::fallback)
     .route("/", routing::get(hello_world::get_hello))
@@ -20,5 +26,5 @@ pub fn app_router() -> Router<()> {
     .route("/things/15", routing::get(things::get_hard_coded)) // order doesn't really matter here. karena exhaustive match
     .route("/things", routing::get(things::get)) // query params
 
-    // ada nested route method, tapi belum bisa dipake. 
+  // ada nested route method, tapi belum bisa dipake.
 }

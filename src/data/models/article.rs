@@ -1,12 +1,13 @@
 // src/models.rs
 use chrono::DateTime;
 use serde::{Deserialize, Serialize};
+use std::default::Default;
 
 // Type aliases for clarity
 pub type AuthorId = u16;
 pub type EditorId = u16;
 
-#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq, Default)]
 pub struct Article {
   pub id: u32,
   pub title: String,
@@ -39,8 +40,9 @@ impl std::fmt::Display for Article {
   }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq, Default)]
 pub enum ApprovalState {
+  #[default]
   Draft,
   RequestApproval,
   ApprovalPending,
@@ -48,7 +50,7 @@ pub enum ApprovalState {
   // Add other states as needed
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq, Default)]
 pub struct Comment {
   pub id: usize,
   pub user_id: AuthorId,
@@ -57,7 +59,7 @@ pub struct Comment {
   // Add other comment fields as needed
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Eq, Hash, PartialEq, Default)]
 pub struct Category {
   pub id: usize,
   pub name: String,

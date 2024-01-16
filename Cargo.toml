@@ -19,3 +19,8 @@ once_cell = "1.10.0"
 
 # date time library -> maybe more comprehensive than std::datetime
 chrono = { version = "0.4", features = ["serde"] }
+
+# untuk buat middleware
+tower = { version = "0.4", features = ["util", "timeout"] }
+
+tower-http = { version = "0.5.0", features = ["add-extension", "trace"] }

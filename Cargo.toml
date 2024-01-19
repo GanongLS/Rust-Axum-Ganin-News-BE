@@ -1,0 +1,26 @@
+[package]
+name = "ganin_news"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.7.4"
+
+# A serialization/deserialization framework.
+serde = { version = "1.0.195", features = ["derive"] }
+
+# Event-driven, non-blocking I/O platform.
+tokio = { version = "1.35.1", features = ["full"] }
+
+# Single assignment cells and lazy values.
+once_cell = "1.10.0"
+
+# date time library -> maybe more comprehensive than std::datetime
+chrono = { version = "0.4", features = ["serde"] }
+
+# untuk buat middleware
+tower = { version = "0.4", features = ["util", "timeout"] }
+
+tower-http = { version = "0.5.0", features = ["add-extension", "trace"] }
